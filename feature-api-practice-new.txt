@@ -1,0 +1,1 @@
+Learning Git branches and merge for my Playwright automation framework for practice.
