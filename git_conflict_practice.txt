@@ -1,1 +1,1 @@
-Original content for Git conflict practice.
+Updated content from Branch A.
