@@ -2,6 +2,14 @@
 pipeline {
     agent any
 
+    parameters {
+        choice(
+            name: 'TEST_SUITE',
+            choices: ['smoke', 'all'],
+            description: 'Choose which test suite to execute'
+        )
+    }
+
     options {
         skipDefaultCheckout(true)
         timestamps()
@@ -37,7 +45,14 @@ pipeline {
         stage('Run Playwright Tests') {
             steps {
                 bat '''
-                    .venv\\Scripts\\python.exe -m pytest -v -s tests -m smoke --junitxml=junit.xml
+                    echo Selected test suite: %TEST_SUITE%
+
+                    if "%TEST_SUITE%"=="smoke" (
+                        .venv\\Scripts\\python.exe -m pytest -v -s tests -m smoke --junitxml=junit.xml
+                    ) else (
+                        .venv\\Scripts\\python.exe -m pytest -v -s tests --junitxml=junit.xml
+                    )
+
                     exit /b %ERRORLEVEL%
                 '''
             }
