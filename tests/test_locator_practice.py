@@ -1,4 +1,5 @@
 import pytest
+from playwright.sync_api import expect
 
 @pytest.mark.smoke
 @pytest.mark.ui
@@ -18,4 +19,4 @@ def test_locator_types(page):
     # CSS class locator
     products_title = page.locator(".title")
 
-    assert products_title.is_visible()
+    expect(page.locator(".title")).to_have_text("Products")
