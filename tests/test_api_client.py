@@ -1,4 +1,5 @@
 from utils.api_client import APIClient
+import requests
 
 
 def test_get_post():
