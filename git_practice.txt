@@ -1,1 +1,3 @@
 Learning Git branches and merge for my playwright automation framework.
+
+Testing automatic Jenkins pipeline trigger.
