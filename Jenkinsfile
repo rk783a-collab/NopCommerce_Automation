@@ -37,7 +37,7 @@ pipeline {
         stage('Run Playwright Tests') {
             steps {
                 bat '''
-                    .venv\\Scripts\\python.exe -m pytest -v -s tests\\test_pom_login.py --junitxml=junit.xml
+                    .venv\\Scripts\\python.exe -m pytest -v -s tests -m smoke --junitxml=junit.xml
                     exit /b %ERRORLEVEL%
                 '''
             }
